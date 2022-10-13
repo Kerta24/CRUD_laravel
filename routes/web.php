@@ -30,18 +30,23 @@ Route::get('/home', function () {
     ]);
 });
 
-Route::get('/table', function () {
-    return view('table',
-[
-    'title' => 'Tabel',
-    'name' => 'Kerta Hendrawan',
-    'NIM' => '2015051031',
-    'email' => 'kerta@gmail.com'
-]);
-});
-
-// Route::get('/tabl', [BiodataController::class, 'index']);
+// Route::get('/table', function () {
+//     return view('table',
+// [
+//     'title' => 'Tabel',
+//     'name' => 'Kerta Hendrawan',
+//     'NIM' => '2015051031',
+//     'email' => 'kerta@gmail.com'
+// ]);
+// });
 
 
 //route resource
-Route::resource('table', \App\Http\Controllers\BiodataController::class);
+// Route::resource('data', \App\Http\Controllers\BiodataController::class);
+Route::resource('page.data', \App\Http\Controllers\BiodataController::class);
+// Route::get('/table'[BiodataController::class, 'index'])->name('table');
+Route::post('table',[BiodataController::class, 'store']);
+Route::get('table',[BiodataController::class, 'create']);
+Route::get('/token', function(){
+    return csrf_token();
+});

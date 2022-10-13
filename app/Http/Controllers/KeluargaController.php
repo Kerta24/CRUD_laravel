@@ -18,7 +18,7 @@ class KeluargaController extends Controller
         $keluargas = Keluarga::latest()->paginate(5);
 
           //render view with posts
-          return view('table', compact('keluargas'));
+          return view('page.data', compact('keluargas'));
     }
 
     /**

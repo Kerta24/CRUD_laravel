@@ -21,7 +21,7 @@
       </div> --}}
       
         <label for="tanggal" class="form-label">Tanggal</label>
-        <input type="text" class="form-control" id="tanggal" name="tanggal">
+        <input type="date" class="form-control" id="tanggal" name="tanggal">
       
     </div>
     <div class="col-md-6">
@@ -66,7 +66,7 @@
 <br>
 <br>
 <br>
-<div class="container">
+{{-- <div class="container">
   <div class=" d-flex me-3">
     <table class="table table-striped">
         <thead>
@@ -82,13 +82,9 @@
           </tr>
         </thead>
         <tbody>
-          {{-- <h1>Coba</h1> --}}
           
-          {{-- @forelse ($biodatas as $data)
-              
-         
-          @endforelse --}}
-        
+          <h1>Coba</h1>
+          
           @foreach ($biodatas as $data)
           <tr>
             <th scope="row">{{ $data->id }}</th>
@@ -99,7 +95,7 @@
             <td>{{ $data->prodi }}</td>
             <td>{{ $data->hobi}}</td>
             <td>{{ $data->alamat}}</td>
-            {{-- <td>{{ $data->postingan->Judul }}</td> --}}
+
           </tr>
           @endforeach
 
@@ -108,7 +104,7 @@
       {{ $biodatas->links() }}
 </div>
 </div>
-{{-- <script>
+<script>
   CKEDITOR.replace( 'content' );
   </script> --}}
 

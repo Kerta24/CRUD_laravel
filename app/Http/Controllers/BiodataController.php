@@ -21,7 +21,7 @@ class BiodataController extends Controller
           $biodatas = biodata::latest()->paginate(10);
 
           //render view with posts
-          return view('table', compact('biodatas'));
+          return view('page.data', compact('biodatas'));
           
     }
 
@@ -32,7 +32,7 @@ class BiodataController extends Controller
      */
     public function create()
     {
-        // return view('table.create');
+        return view('table');
     }
 
     /**
@@ -44,14 +44,28 @@ class BiodataController extends Controller
     public function store(StorebiodataRequest $request)
     {
 
-        return $request;
+
+        $post=new biodata;
+
+        $post->name = $request->name;
+        $post->tl = $request->tempat_lahir;
+        $post->tanggal = $request->tanggal_lahir;
+        $post->jk = $request->jenis_kelamin;
+        $post->prodi = $request->prodi;
+        $post->hobi = $request->hobi;
+        $post->alamat = $request->alamat;
+
+        $post->save();
+        return redirect('/page/data.blade.php');
+
+        // return $request;
         // $this->validate($request,[
         //     'name' => 'required',
         //     'tl' => 'required',
         //     'tanggal' => 'required',
         //     'jk' => 'required',
         //     'prodi' => 'required',
-        //     'hobi' => 'required'
+        //     'hobi' => 'required',
         //     'alamat' => 'required'
         // ]);
 
@@ -62,16 +76,16 @@ class BiodataController extends Controller
         //     'tanggal' => $request->tanggal_lahir,
         //     'jk' => $request->jenis_kelamin,
         //     'prodi' => $request -> prodi,
-        //     'hobi' => $request -> hobi
+        //     'hobi' => $request -> hobi,
         //     'alamat' => $request -> alamat
         // ]);
 
         // if($table){
         //     //redirect dengan pesan sukses
-        //     return redirect()->route('table.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        //     return redirect()->route('page.data')->with(['success' => 'Data Berhasil Disimpan!']);
         //   }else{
         //     //redirect dengan pesan error
-        //     return redirect()->route('table.index')->with(['error' => 'Data Gagal Disimpan!']);
+        //     return redirect()->route('table')->with(['error' => 'Data Gagal Disimpan!']);
         //   }
           
     }
